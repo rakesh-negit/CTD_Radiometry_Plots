@@ -1,0 +1,106 @@
+#########################################################################################
+# Telemetry Definition File:
+#
+# Type: WETLabs BB2F 576
+# Description: Combination Scattering Meter and Fluorometer
+# WET Labs Characterization sheet: <insert sheet date or other id here>
+# Project: <insert project # here>
+# Date: March 24 2009
+# User: James Foesenek
+#
+# Notes:
+#	The BB2F outputs tab-delimited ASCII data.
+#	Normally the BB2F will be used with a Profiler II
+#	The Profiler II design will accept up to 2 foreign 
+#	ASCII linefeed terminated RS-232 devices.
+#	The Profiler II attaches a header based on the device type assigned to each port.  
+#	The user must ensure that the device is connected to the correct input port!
+#
+#	This tdf file should be named SATBB2Fxxx[Rev].tdf, e.g. SATBB2F999A.tdf.
+#	The [Rev] field is the alphabetical revision of the file, and should be
+#	updated when calibration coefficients are changed.	 
+#
+# Creation Date: September 16, 2003
+# Author: Scott Feener
+#
+# Template History:
+#   2003-09-16, SF: Template created
+#	2008-11-12, SF: Template placed under revision control.
+#                   Comments updated
+#                   DATEFIELD and TIMEFIELD fields FIT-TYPE set to NONE per JIRA 2006-404-95
+#
+# File History:
+#   Revision:   Date:       User:       Notes:
+#   A           20yy-mm-dd  
+#
+#
+##########################################################################################
+
+#
+# Instrument specific header and SN, attached by Profiler II
+#     Note: replace 'xxx' with instrument SN
+VLF_INSTRUMENT SATBB2F576 '' 10 AS 0 NONE
+
+#
+# Date placeholder.
+#
+FIELD NONE '\x09' 1 AS 0 DELIMITER
+DATEFIELD NONE '' V AS 0 NONE
+
+#
+# Time placeholder
+#
+FIELD NONE '\x09' 1 AS 0 DELIMITER
+TIMEFIELD NONE '' V AS 0 NONE
+
+#
+# Blue reference channel
+#     Only raw counts are displayed - no calibration coefficients
+#
+FIELD NONE '\x09' 1 AS 0 DELIMITER
+BLUE_REF NONE '' V AI 0 COUNT
+
+#
+# Blue backscatter signal
+#     Obtain the coefficients from the WETLabs cal sheet
+#     Remember to update the wavelength (i.e. 470).
+#     Coefficient order is METER SCALE FACTOR then CLEAN WATER OFFSET counts
+#
+FIELD NONE '\x09' 1 AS 0 DELIMITER
+BETA_BLUE 470 '1/(m*sr)' V AI 1 POLYF
+1.176E-05 49.0
+
+#
+# Red reference channel
+#     Only raw counts are displayed - no calibration coefficients
+#
+FIELD NONE '\x09' 1 AS 0 DELIMITER
+RED_REF NONE '' V AI 0 COUNT
+
+#
+# Red backscatter signal
+#     Obtain the coefficients from the WETLabs cal sheet
+#     Remember to update the wavelength (i.e. 700).
+#     Coefficient order is METER SCALE FACTOR then CLEAN WATER OFFSET counts
+#
+FIELD NONE '\x09' 1 AS 0 DELIMITER
+BETA_RED 700 '1/(m*sr)' V AI 1 POLYF
+3.186E-06 49.0
+
+#
+# Fluorescence signal
+#     Obtain the coefficients from the WETLabs cal sheet
+#     Coefficient order is SCALE FACTOR the CLEAN WATER OFFSET counts
+FIELD NONE '\x09' 1 AS 0 DELIMITER
+FLUOR NONE 'ug/l' V AI 1 POLYF
+0.0116 49
+
+#
+# Internal thermistor
+#   An uncalibrated thermistor field.
+#   The coefficients below give approximate internal temperature
+FIELD NONE '\x09' 1 AS 0 DELIMITER
+THERM NONE 'C' V AI 1 POLYU
+395.94 -0.6793
+
+TERMINATOR NONE '\x0D\x0A' 2 AS 0 DELIMITER

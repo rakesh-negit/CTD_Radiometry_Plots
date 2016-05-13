@@ -1,0 +1,67 @@
+#
+# SatNet HyperPro Calibration File (Profiler 2)
+#
+# MPR s/n 0124
+#
+# For project 2009-703
+# University of Delaware
+# Calibration file March 10, 2009
+# Updated by Jenn/Jimmi
+#
+INSTRUMENT SATMPR '' 6 AS 0 NONE	# frame sync string
+SN 0124 '' 4 AS 0 NONE			# instrument serial number
+
+DATARATE 57600 'bps' 0 BU 0 NONE	# nominal baud rate
+
+SV-MPR NONE 'Volts' 2 BU 1 POLYU	# sensed supply voltage - 12V nominal
+0 0.03
+
+VA-MPR NONE 'Volts' 2 BU 1 POLYU	# sensed analog voltage - 5V nominal
+0 0.03
+
+V15-MPR NONE 'Volts' 2 BU 1 POLYU	# sensed pressure sensor supply voltage - 15V nominal
+0 0.03
+
+TEMP-MPR PCB 'Celsius' 2 BU 1 POLYU	# internal temperature measurement
+-50.0 0.5
+
+AUX 1 '' 2 BU 0 NONE			# Spare channel
+
+AUX 2 '' 2 BU 0 NONE			# Spare channel
+
+AUX 3 '' 2 BU 0 NONE			# Spare channel; normally Heimann pyrometer
+
+# 300 PSI Druck PMP 4110 MPR s/n 2818719
+# Coefficients by James Foesenek 
+#300 psi assumed to be 204.7785888 m of seawater
+Pres none 'm' 2 BU 1 POLYF
+0.006262157 32768
+
+# Applied Geomechanics Tilt Sensor Model 902,
+# Calibrated +-20deg by James Foesenek Mar 5 2009
+# Processed by James Foesenek on Mar 5 2009
+TILT X '' 2 BU 1 POLYU			# X axis tilt
+-8.9703693e+001 2.8979561e-003 1.3429822e-009
+TILT Y '' 2 BU 1 POLYU			# Y axis tilt
+-4.9775289e+001 1.3793346e-003 4.4444089e-009
+TEMP TILT '' 2 BU 0 COUNT		# Temperature of tilt sensor
+
+AUX 8 '' 2 BU 0 NONE			# Spare channel
+
+# Applied MicroSystems CT sensor  Updated by James Foesenek 
+# Model OEM Micro CT
+# Serial 7686
+
+COND NONE 'mmho/cm' 4 BF 1 POLYU	# serial CT conductivity measurement
+0 1
+
+T w 'C' 4 BF 0 COUNT			# serial CT temperature measurement
+
+FRAME NONE '' 1 BU 0 COUNT
+
+TIMER NONE 'sec' 10 AF 0 COUNT
+
+CHECK SUM '' 1 BU 0 COUNT
+
+TERMINATOR NONE '' 2 AS 0 NONE
+
