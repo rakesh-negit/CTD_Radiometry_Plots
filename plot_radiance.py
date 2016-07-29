@@ -14,7 +14,7 @@ matplotlib.rcParams['svg.fonttype'] = 'none'
 from hdf_utils import *
 
 # convert uW/cm^2 to umol/(m^2*s)
-def convert(y, wavelengths)
+def convert(y, wavelengths):
     hc = 6.626e-34 * 3e8;
     Na = 6.02e23;
 
