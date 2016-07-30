@@ -14,7 +14,7 @@ from pyhdf.V   import *
 from pyhdf.VS  import *
 from pyhdf.SD  import *
 
-def read_radiances_etc(inputfile):
+def read_data_from_hdf(inputfile):
     wavelengths = []
     depth = []
     downwelling_downcast = []
@@ -125,4 +125,3 @@ def describevg(refnum,v,vs,sds):
 
     # Close vgroup
     vg.detach()
-	
